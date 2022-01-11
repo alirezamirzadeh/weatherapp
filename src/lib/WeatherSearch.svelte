@@ -23,9 +23,9 @@ const handleSubmit = async() => {
 
 
 <form on:submit|preventDefault={handleSubmit}>
+    <input type="text" bind:value placeholder="یک شهر وارد کن"/>
     <button type="submit">جستجو</button>
 
-    <input type="text" bind:value placeholder="یک شهر وارد کن"/>
 </form>
 
 
@@ -48,7 +48,6 @@ width: 80%;
 border-radius: .5rem;
 padding-right: 1rem;
 text-decoration: right;
-direction: rtl;
 border: 2px solid #111;
 opacity: .5;
 font-family: inherit;

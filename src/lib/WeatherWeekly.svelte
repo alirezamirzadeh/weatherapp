@@ -1,13 +1,34 @@
 <script>
+    import {week} from '../data/index'
 export let data;
 </script>
 
 
-<h6>{new Date(data.sunrise * 1000).getHours()}</h6>
-<h6>{new Date(data.sunset * 1000).getHours()}</h6>
-    {Math.round(data.temp.min)}
-    {Math.round(data.temp.max)}
-    <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="">
+<div class="weekly">
+        <p>{week[new Date(data.dt *1000).getDay()]}</p> 
+        <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} height="100px" width="100px" alt="">
 
-    {data.weather[0].description}
-    {new Date(data.dt *1000).getDay()}
+<div>
+        <span class="min">º{Math.round(data.temp.min)}</span>
+        <span>º{Math.round(data.temp.max)}</span>
+</div>
+
+</div>
+
+
+
+<style>
+    .weekly {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: blue;
+        
+    }
+    .min {
+        opacity: .7;
+        margin-right: .5rem;
+    }
+
+</style>

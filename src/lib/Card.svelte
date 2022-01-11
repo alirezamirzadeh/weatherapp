@@ -7,27 +7,33 @@
     export let id;
 </script>
 
+<Link to={`/${city}`} class="card">
+   <div class="city__card" transition:fly={{delay: id*300}} >
 
+        <img src="src/assets/images/{city}.svg" alt="city iran" height="100%" width="100%">
+        <span>{city}</span>
     
-<Link to={`/${city}`} class="city__card" >
-    <img transition:fly={{delay: id * 300}} src="src/assets/images/{city}.svg" alt="city iran" height="100%" width="100%">
-    <span>{city}</span>
+   </div> 
 </Link>
 
 
 
 
 <style>
+    :global(.card){
+        flex: 1;
+        margin-top: 2rem;
+ display: inline-flex;
+
+    }
 :global(.city__card){
-   flex: 1;
-   width: 30;
-   margin-top: 2rem;
-   position: relative;
    overflow: hidden;
    border: 2px solid #000;
    border-radius: 1.5rem;
-   height: 100%;
-    width: 100%;
+    z-index: 10;
+    height: 100%;
+    width:100%;
+    position: relative;
 
 }
 
@@ -57,8 +63,8 @@ span {
     transform: translateX(150%);
     background: linear-gradient(transparent,#1A237E);
     width: 100%;
-    height: 70px;
-    transition: .8s ease-in-out  ;
+    height: 35%;
+    transition: 1s ease-in-out  ;
     border-radius:  0 1rem 1rem;
     
 }

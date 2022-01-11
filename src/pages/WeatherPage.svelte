@@ -7,6 +7,12 @@ import { useParams } from "svelte-navigator";
 import WeatherWeekly from '../lib/WeatherWeekly.svelte';
 import WeatherHours from '../lib/WeatherHours.svelte';
 
+import { fadeIn, fadeOut } from "../lib/PageFade";
+import WeatherToday from '../lib/WeatherToday.svelte';
+
+
+
+
 const params = useParams();
 
 onMount(() => {
@@ -19,32 +25,77 @@ onMount(() => {
     <title>اب و هوای {$params.city}</title>
 </svelte:head>
 
-<WeatherSearch />
 
-{#if $loading}
+<main in:fadeIn out:fadeOut>
 
-    ..loading
+    <WeatherSearch />
 
-{:else if $error}
+    {#if $loading}
 
-    error
+        ..loading
 
-{:else if $weatherData.cod === 200}
+    {:else if $error}
 
+        error
 
-<hr />
+    {:else if $weatherData.cod === 200}
 
-{#each $weekData as data,i (i)}
-
-<WeatherWeekly {data} />
-
-{/each} 
-
-{#each $hoursData as data,i (i)}
-<WeatherHours {data}/>
-{/each}
+    <WeatherToday />
 
 
+    <div class="box__hours">
+        {#each $hoursData as data,i (i)}
+
+            <WeatherHours {data}/>
+
+        {/each}
+
+    </div>
 
 
-{/if}
+    <div class="box__weekly">
+
+        {#each $weekData as data,i (i)}
+
+        <WeatherWeekly {data} />
+
+        {/each} 
+
+    </div>
+
+    {/if}
+
+</main>
+
+
+
+<style>
+    main {
+  width: min(90%,800px);
+  margin-inline:  auto;
+  margin-top: 5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.box__weekly {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+
+}
+
+.box__hours {
+    display: flex;
+    gap: 1rem;
+
+    margin-top: 2rem;
+
+
+}
+</style>
+
+

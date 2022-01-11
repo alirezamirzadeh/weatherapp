@@ -19,15 +19,15 @@ import WeatherSearch from "../lib/WeatherSearch.svelte";
 </main>
 
 <style>
-  main {
-    width: min(90%,800px);
-    margin-inline: auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+main {
+  width: min(90%,800px);
+  margin-inline: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  }
+}
 .box__card{
   display: flex;
   flex-wrap: wrap;
