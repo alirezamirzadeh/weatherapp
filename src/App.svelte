@@ -5,11 +5,21 @@ import WeatherPage from './pages/WeatherPage.svelte';
 
 </script>
 
+<svelte:head>
+  <link rel="stylesheet" href="src/assets/global.css">
+</svelte:head>
 
 <Router>
 
-  <Route path="/" component={WeatherPage} />
+  <Route path="/" component={HomePage} />
 
-  <Route path="/weather" component={HomePage}/>
+
+  <Route path=":city" component={WeatherPage}>
+  </Route>
+
+
+
 
 </Router>
+
+

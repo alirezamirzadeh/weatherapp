@@ -3,17 +3,16 @@ import { writable } from "svelte/store";
 const key = 'f29547a948f6a76c7f3c4d9fa0fceb0c';
 const url = 'https://api.openweathermap.org/data/2.5/'
 
+export const weatherData = writable([]);
 
-export const weather = () => {
-
-  const weatherData = writable([]);
-  const loading = writable(false);
-  const error = writable(false);
-  const hoursData = writable([])
-  const weekData = writable([])
+export const loading = writable(false);
+export const error = writable(false);
+export const hoursData = writable([])
+export const weekData = writable([])
 
 
-  const get = async (city) => {
+
+export const getweather =  async (city) => {
 
     loading.set(true)
     error.set(false)
@@ -27,7 +26,6 @@ export const weather = () => {
       weatherData.set(res)
       hoursData.set(res2.hourly.slice(0, 24))
       weekData.set(res2.daily.slice(0,7))
-      console.log(res);
 
 
     } catch (e) {
@@ -39,5 +37,5 @@ export const weather = () => {
 
   };
 
-  return {weatherData,hoursData,weekData,loading,error,get}
-};
+
+

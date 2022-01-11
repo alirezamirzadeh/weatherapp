@@ -1,18 +1,25 @@
 <script>
 // @ts-nocheck
-
+import {onMount} from 'svelte'
 import WeatherSearch from '../lib/WeatherSearch.svelte';
-import {weather} from '../stores/weather';
+import {weatherData,getweather,hoursData,weekData, loading,error} from '../stores/weather';
+import { useParams } from "svelte-navigator";
+import WeatherWeekly from '../lib/WeatherWeekly.svelte';
+import WeatherHours from '../lib/WeatherHours.svelte';
 
-const {weatherData,hoursData,weekData, loading,error,get}= weather();
+const params = useParams();
 
-const handleWeather = (e) => {
-    get(e.detail)
-    
-}
+onMount(() => {
+    getweather($params.city)
+})
+
 </script>
 
-<WeatherSearch on:city={handleWeather}/>
+<svelte:head>
+    <title>اب و هوای {$params.city}</title>
+</svelte:head>
+
+<WeatherSearch />
 
 {#if $loading}
 
@@ -25,35 +32,16 @@ const handleWeather = (e) => {
 {:else if $weatherData.cod === 200}
 
 
-<div>
-    {new Date($weatherData.dt * 1000).getHours()}
- {Math.round($weatherData.main.temp)}
-<h6>{$weatherData.sys.sunrise}</h6>
-{$weatherData.sys.sunset}
-{$weatherData.weather[0].description}
-<p>{$weatherData.weather[0].icon}
-</p>{$weatherData.name}
-</div>
 <hr />
 
 {#each $weekData as data,i (i)}
 
-    <h6>{data.sunrise}</h6>
-    {data.sunset}
-    {Math.round(data.temp.min)}
-    {Math.round(data.temp.max)}
-    {data.weather[0].description}
-    {data.weather[0].icon}
-    {new Date(data.dt *1000).getDay()}
+<WeatherWeekly {data} />
 
 {/each} 
 
 {#each $hoursData as data,i (i)}
-<h5>    
-    {new Date(data.dt * 1000).getHours()}
-    {data.weather[0].icon}
-{Math.round(data.temp)}
-</h5>
+<WeatherHours {data}/>
 {/each}
 
 

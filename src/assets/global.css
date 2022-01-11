@@ -1,0 +1,16 @@
+
+  @font-face {
+    font-family: vazir;
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url("../../public/fonts/vazir.woff2") format("woff2");
+  }
+  
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Vazir";
+}
