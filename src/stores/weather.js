@@ -1,10 +1,11 @@
 import { writable } from "svelte/store";
 
+// You can use my key if you like,no problem
 const key = 'f29547a948f6a76c7f3c4d9fa0fceb0c';
 const url = 'https://api.openweathermap.org/data/2.5/'
 
-export const weatherData = writable([]);
 
+export const weatherData = writable([]);
 export const loading = writable(false);
 export const error = writable(false);
 export const hoursData = writable([])

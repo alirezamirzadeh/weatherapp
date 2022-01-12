@@ -2,17 +2,14 @@
     import {Link} from 'svelte-navigator';
     import {fly} from 'svelte/transition';
 
-
 	export let city;
     export let id;
 </script>
 
 <Link to={`/${city}`} class="card">
    <div class="city__card" transition:fly={{delay: id*300}} >
-
         <img src="src/assets/images/{city}.svg" alt="city iran" height="100%" width="100%">
         <span>{city}</span>
-    
    </div> 
 </Link>
 
@@ -23,10 +20,9 @@
     :global(.card){
         flex: 1;
         margin-top: 2rem;
- display: inline-flex;
 
     }
-:global(.city__card){
+.city__card{
    overflow: hidden;
    border: 2px solid #000;
    border-radius: 1.5rem;
@@ -37,7 +33,7 @@
 
 }
 
-:global(.city__card):hover {
+.city__card:hover {
     background-color: #4FC3F7;
     border: 2px solid #4FC3F7;
     transition: .6s ease-in-out  ;
@@ -46,7 +42,7 @@
 }
 
 
-:global(.city__card):hover span{
+.city__card:hover span{
     transform: translateX(0);
 
 
@@ -67,5 +63,11 @@ span {
     transition: 1s ease-in-out  ;
     border-radius:  0 1rem 1rem;
     
+}
+
+@media (max-width: 700px) {
+    :global(.card){
+    width: 200px;
+    flex: 1 1 auto;    }
 }
 </style>

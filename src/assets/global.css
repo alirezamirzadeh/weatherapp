@@ -4,7 +4,7 @@
     font-style: normal;
     font-weight: normal;
     font-display: swap;
-    src: url("../../public/fonts/vazir.woff2") format("woff2");
+    src: url("./vazir.woff2") format("woff2");
   }
   
 
@@ -14,8 +14,26 @@ body {
   box-sizing: border-box;
   font-family: "Vazir";
   color: #fff;
-  direction: rtl;
 
+  direction: rtl;
+  width: 100%;
+  height: 100%;
+  
+
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 
 }
 
+::-webkit-scrollbar {
+  height: 8px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 8px;    
+  background-color: rgba(255, 255, 240, 0.2);
+  border-radius: 1rem;
+  overflow: visible;
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  opacity: 1; /* Firefox */
+}

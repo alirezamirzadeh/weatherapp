@@ -1,22 +1,26 @@
 <script>
 // @ts-nocheck
 import Card from "../lib/Card.svelte";
-import {cities} from '../data/index';
-import WeatherSearch from "../lib/WeatherSearch.svelte";
+import {cities} from '../utils/index';
 
 </script>
 
+
+<svelte:head>
+    <title>اب و هوای تمام شهرای دنیا</title>
+</svelte:head>
+
+
 <main>
 
-  <WeatherSearch />
 
   <div class="box__card" >
       {#each cities as {id,city} (id)}
-      <Card {city}  {id} />
-      
+      <Card {city}  {id} />  
       {/each}
   </div>
 </main>
+
 
 <style>
 main {
@@ -34,6 +38,8 @@ main {
   gap: 1rem;
 
 }
+
+
 
 
 </style>

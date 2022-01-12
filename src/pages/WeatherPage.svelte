@@ -7,8 +7,13 @@ import { useParams } from "svelte-navigator";
 import WeatherWeekly from '../lib/WeatherWeekly.svelte';
 import WeatherHours from '../lib/WeatherHours.svelte';
 
-import { fadeIn, fadeOut } from "../lib/PageFade";
+import { fadeIn, fadeOut } from "../utils/PageFade";
 import WeatherToday from '../lib/WeatherToday.svelte';
+import Video from '../lib/Video.svelte';
+import Loading from '../lib/Loading.svelte';
+import Error from '../lib/Error.svelte';
+
+
 
 
 
@@ -26,17 +31,21 @@ onMount(() => {
 </svelte:head>
 
 
+{#if $weatherData.cod === 200}
+<Video />
+{/if}
+
 <main in:fadeIn out:fadeOut>
 
     <WeatherSearch />
 
     {#if $loading}
 
-        ..loading
+        <Loading />
 
     {:else if $error}
 
-        error
+        <Error />
 
     {:else if $weatherData.cod === 200}
 
@@ -85,17 +94,18 @@ onMount(() => {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
+    margin-bottom: 3rem;
+    overflow: auto;
 
 }
 
 .box__hours {
     display: flex;
     gap: 1rem;
-
+    overflow: auto;
     margin-top: 2rem;
-
-
 }
+
 </style>
 
 

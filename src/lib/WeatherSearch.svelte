@@ -1,17 +1,13 @@
 <script>
-	import { useNavigate } from "svelte-navigator";
-    import {getweather,weatherData} from '../stores/weather';
-
-
-const navigate = useNavigate();
+import { navigate } from "svelte-navigator";
+import {getweather,weatherData} from '../stores/weather';
 
 let value = '';
 
-const handleSubmit = async() => {
+const handleSubmit = async () => {
     navigate(`/${value}`)
 
     getweather(value)
-    console.log('xcc',$weatherData);
 
 }
 
@@ -44,20 +40,22 @@ justify-content: space-between;
 }
 
 input {
-width: 80%;
+width: 78%;
 border-radius: .5rem;
 padding-right: 1rem;
 text-decoration: right;
-border: 2px solid #111;
-opacity: .5;
+border: 0;
+color: inherit;
+font-size: 1.2rem;
 font-family: inherit;
 box-shadow: 0 1rem 1.45rem rgba(0, 0, 0, 0.2);
+background: rgba(255, 255, 255, 0.2);
 }
 button {
 border-radius: .5rem;
     width: 17%;
     border: 0;
-    background-color: #283593;
+    background-color: rgba(28, 35, 93, 0.4);
     color: #fff;
     font-size: 1.1rem;
     font-family: inherit;
@@ -65,10 +63,18 @@ border-radius: .5rem;
     cursor: pointer;
     
 }
+button:hover {
+    background-color: rgba(28, 35, 93, .8);
 
+}
 input:focus {
     outline:none;
-    border: 2px solid #283593;opacity: .7;
+    border: 3px solid #283593;opacity: .7;
 
+}
+
+@media  (max-width: 600px ){
+    button{width: 30%;}
+    input{width: 60%;}
 }
 </style>
