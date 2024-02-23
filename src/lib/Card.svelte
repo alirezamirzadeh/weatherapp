@@ -8,7 +8,7 @@
 
 <Link to={`/${city}`} class="card">
    <div class="city__card" transition:fly={{delay: id*300}} >
-        <img src="../../src/assets/images/{city}.svg" alt="city iran" height="100%" width="100%">
+        <img src="images/{city}.svg" alt="city iran" height="100%" width="100%">
         <span>{city}</span>
    </div> 
 </Link>
