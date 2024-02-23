@@ -74,7 +74,7 @@ autoPlay
 loop
 muted
 playsInline
-src="src/assets/videos/{nameVideo}.webm">
+src="videos/{nameVideo}.webm">
 Your browser does not support the video tag.
 </video>
 <div>
